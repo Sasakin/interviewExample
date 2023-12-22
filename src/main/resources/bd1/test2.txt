@@ -1,0 +1,29 @@
+https://www.db-fiddle.com/f/3uDqW8YhwopwuT3VzFUCvs/0
+-- необходимо написать запрос, возвращающий идентификаторы домов БЕЗ однокомнатных квартир
+
+-- Есть дома, в домах есть квартиры, в квартирах - комнаты.
+create table house(id int primary key); -- дом
+create table ap(id int primary key, h_id int references house(id) not null); -- квартира
+create table room(id int primary key, ap_id int references ap(id) not null); -- комната
+
+insert into house values (1);
+insert into house values (2);
+insert into house values (3);
+
+insert into ap values (1, 1);
+insert into ap values (2, 1);
+insert into ap values (3, 1);
+insert into ap values (4, 2);
+insert into ap values (5, 2);
+insert into ap values (6, 3);
+
+insert into room values (1, 1);
+insert into room values (2, 1);
+insert into room values (3, 1);
+insert into room values (4, 2);
+insert into room values (5, 3);
+insert into room values (6, 3);
+insert into room values (7, 4);
+insert into room values (8, 5);
+insert into room values (9, 6);
+insert into room values (10, 6);

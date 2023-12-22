@@ -1,0 +1,14 @@
+SELECT item.name, item.price
+FROM warehouse
+         JOIN warehouse_item ON warehouse.id = warehouse_item.warehouse_id
+         JOIN item ON item.id = warehouse_item.item_id
+WHERE warehouse.id = 2
+ORDER BY item.price DESC
+LIMIT 1 OFFSET 1;
+
+
+SELECT h.id, a.id, count(r.id)
+FROM house h
+         LEFT JOIN ap a ON h.id = a.h_id
+         LEFT JOIN room r ON a.id = r.ap_id
+GROUP BY h.id, a.id;

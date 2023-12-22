@@ -1,0 +1,8 @@
+SELECT c.customer_id, c.customer_name, o.order_id, o.order_date, SUM(oi.quantity) AS total_quantity, SUM(oi.price) AS total_price
+FROM Customers c
+INNER JOIN Orders o ON c.customer_id = o.customer_id
+INNER JOIN OrderItems oi ON o.order_id = oi.order_id
+WHERE c.city = 'Москва'
+GROUP BY c.customer_id, c.customer_name, o.order_id, o.order_date
+HAVING total_quantity > 10
+ORDER BY total_price DESC;

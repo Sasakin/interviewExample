@@ -1,0 +1,33 @@
+create table users
+(
+    id   integer,
+    name varchar(255),
+    size_id   integer
+);
+
+create table sizes
+(
+    id   integer,
+    size_eu integer
+);
+
+
+insert into users values (1, 'Маша', 1), (2, 'Петя', 2), (3, 'Саша', 1), (4, 'Витя', 3), (5, 'Вася', 1);
+
+insert into sizes values (1, 38), (2, 40), (3, 42);
+
+1. Сколько строк вернется в результате запроса:
+select * from users as u
+LEFT JOIN sizes s on u.size_id = s.id;
+
+2. Сколько строк вернется в результате запроса:
+select * from users as u
+RIGHT JOIN sizes s on u.size_id = s.id;
+
+3. Сколько строк вернется в результате запроса:
+select * from users as u
+INNER JOIN sizes s on u.size_id = s.id;
+
+4. Сколько строк вернется в результате запроса:
+select * from users as u
+LEFT OUTER JOIN sizes s on u.size_id = s.id;
